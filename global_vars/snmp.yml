@@ -1,0 +1,11 @@
+---
+
+snmp_settings:
+  contact: "Global Network Operations Center <gnoc@example.com>"
+  location: True
+  location_template: "Global Campus Fabric"
+  communities:
+    - name: ro-community-string
+      access: ro
+    - name: rw-community-string
+      access: rw

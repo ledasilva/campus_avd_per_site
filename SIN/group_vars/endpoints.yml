@@ -1,0 +1,27 @@
+---
+# AVD 6.0 Profiles: 'profile' replaces 'name'
+port_profiles:
+  - profile: PP_CLIENTS
+    mode: access
+    vlans: "10"
+    spanning_tree_portfast: edge
+
+  - profile: PP_WIFI_AP
+    mode: access
+    vlans: "20"
+    spanning_tree_portfast: edge
+    structured_config:
+      poe:
+        priority: high
+
+network_ports:
+  - switches:
+      - ".*LEAF.*"
+    switch_ports:
+      - Ethernet1-24
+    profile: PP_CLIENTS
+  - switches:
+      - ".*LEAF.*"
+    switch_ports:
+      - Ethernet25-48
+    profile: PP_WIFI_AP

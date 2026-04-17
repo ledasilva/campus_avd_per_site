@@ -1,0 +1,10 @@
+---
+custom_structured_configuration_interface_profiles:
+  - name: IP-PUSHED_CONFIG
+    commands:
+      - switchport
+      - switchport trunk native vlan 100
+      - switchport trunk allowed vlan 200
+      - switchport mode trunk
+      - spanning-tree portfast
+      - dot1x host-mode multi-host

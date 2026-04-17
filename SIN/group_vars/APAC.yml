@@ -1,0 +1,35 @@
+---
+# Regional Management Settings for APAC
+timezone: Asia/Singapore
+
+# NTP Settings (Regional)
+ntp_settings:
+  servers:
+    - name: 10.30.1.10
+    - name: 10.30.1.11
+
+# DNS Settings (Regional)
+name_server:
+  nodes:
+    - 10.30.1.5
+    - 10.30.1.6
+
+# AAA Settings (Regional TACACS+)
+aaa_settings:
+  tacacs:
+    servers:
+      - host: 10.30.1.50
+        groups: 
+          - TACACS_GROUP
+        key: "ENCRYPTED_KEY"
+      - host: 10.30.1.51
+        groups: 
+          - TACACS_GROUP
+        key: "ENCRYPTED_KEY"
+
+# CloudVision (CVP) Settings
+cv_settings:
+  onprem_clusters:
+    - name: APAC
+      servers: 
+        - name: 10.3.1.1

@@ -1,0 +1,217 @@
+aaa_root:
+  disabled: true
+aaa_server_groups:
+- name: TACACS_GROUP
+  type: tacacs+
+  servers:
+  - server: 10.30.1.50
+    vrf: MGMT
+  - server: 10.30.1.51
+    vrf: MGMT
+clock:
+  timezone: Asia/Singapore
+config_end: true
+daemon_terminattr:
+  cvaddrs:
+  - 10.3.1.1:9910
+  cvauth:
+    method: token
+    token_file: /tmp/token
+  cvsourceintf: Management1
+  cvvrf: MGMT
+  disable_aaa: false
+  smashexcludes: ale,flexCounter,hardware,kni,pulse,strata
+enable_password:
+  disabled: true
+ethernet_interfaces:
+- name: Ethernet1
+  description: P2P_SINRLEAF01A_Ethernet49
+  shutdown: false
+  mtu: 9214
+  ip_address: 10.255.2.0/31
+  metadata:
+    peer: SINRLEAF01A
+    peer_interface: Ethernet49
+    peer_type: l3leaf
+  switchport:
+    enabled: false
+- name: Ethernet2
+  description: P2P_SINRLEAF02A_Ethernet49
+  shutdown: false
+  mtu: 9214
+  ip_address: 10.255.2.4/31
+  metadata:
+    peer: SINRLEAF02A
+    peer_interface: Ethernet49
+    peer_type: l3leaf
+  switchport:
+    enabled: false
+- name: Ethernet3
+  description: P2P_SINRLEAF03A_Ethernet53
+  shutdown: false
+  mtu: 9214
+  ip_address: 10.255.2.8/31
+  metadata:
+    peer: SINRLEAF03A
+    peer_interface: Ethernet53
+    peer_type: l3leaf
+  switchport:
+    enabled: false
+hostname: SINRSPINE01A
+ip_routing: true
+ip_tacacs:
+  vrfs:
+  - name: MGMT
+    source_interface: Management1
+loopback_interfaces:
+- name: Loopback0
+  description: ROUTER_ID
+  shutdown: false
+  ip_address: 10.255.0.5/32
+management_api_http:
+  enable_https: true
+  enable_vrfs:
+  - name: MGMT
+management_interfaces:
+- name: Management1
+  description: OOB_MANAGEMENT
+  shutdown: false
+  vrf: MGMT
+  ip_address: 10.10.101.11/24
+  type: oob
+metadata:
+  is_deployed: true
+  platform: DCS-7050PX4
+  dc_name: SIN
+  fabric_name: SIN
+ntp:
+  local_interface:
+    name: Management1
+    vrf: MGMT
+  servers:
+  - name: 10.30.1.10
+    preferred: true
+  - name: 10.30.1.11
+  vrf: MGMT
+prefix_lists:
+- name: PL-LOOPBACKS-EVPN-OVERLAY
+  sequence_numbers:
+  - sequence: 10
+    action: permit 10.255.0.0/24 eq 32
+route_maps:
+- name: RM-CONN-2-BGP
+  sequence_numbers:
+  - sequence: 10
+    type: permit
+    match:
+    - ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY
+router_bfd:
+  multihop:
+    interval: 300
+    min_rx: 300
+    multiplier: 3
+router_bgp:
+  as: '65200'
+  router_id: 10.255.0.5
+  maximum_paths:
+    paths: 4
+  updates:
+    wait_install: true
+  bgp:
+    default:
+      ipv4_unicast: false
+  peer_groups:
+  - name: IPv4-UNDERLAY-PEERS
+    metadata:
+      type: ipv4
+    send_community: all
+    maximum_routes: 256000
+  - name: EVPN-OVERLAY-PEERS
+    metadata:
+      type: evpn
+    next_hop_unchanged: true
+    update_source: Loopback0
+    bfd: true
+    ebgp_multihop: 3
+    send_community: all
+    maximum_routes: 0
+  neighbors:
+  - ip_address: 10.255.2.1
+    peer_group: IPv4-UNDERLAY-PEERS
+    remote_as: '65201'
+    metadata:
+      peer: SINRLEAF01A
+    description: SINRLEAF01A_Ethernet49
+  - ip_address: 10.255.2.5
+    peer_group: IPv4-UNDERLAY-PEERS
+    remote_as: '65201'
+    metadata:
+      peer: SINRLEAF02A
+    description: SINRLEAF02A_Ethernet49
+  - ip_address: 10.255.2.9
+    peer_group: IPv4-UNDERLAY-PEERS
+    remote_as: '65203'
+    metadata:
+      peer: SINRLEAF03A
+    description: SINRLEAF03A_Ethernet53
+  - ip_address: 10.255.0.1
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65201'
+    metadata:
+      peer: SINRLEAF01A
+    description: SINRLEAF01A_Loopback0
+  - ip_address: 10.255.0.2
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65201'
+    metadata:
+      peer: SINRLEAF02A
+    description: SINRLEAF02A_Loopback0
+  - ip_address: 10.255.0.3
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65203'
+    metadata:
+      peer: SINRLEAF03A
+    description: SINRLEAF03A_Loopback0
+  redistribute:
+    connected:
+      enabled: true
+      route_map: RM-CONN-2-BGP
+  address_family_evpn:
+    peer_groups:
+    - name: EVPN-OVERLAY-PEERS
+      activate: true
+  address_family_ipv4:
+    peer_groups:
+    - name: IPv4-UNDERLAY-PEERS
+      activate: true
+    - name: EVPN-OVERLAY-PEERS
+      activate: false
+service_routing_protocols_model: multi-agent
+snmp_server:
+  contact: Global Network Operations Center <gnoc@example.com>
+  location: Global Campus Fabric
+  communities:
+  - name: ro-community-string
+    access: ro
+  - name: rw-community-string
+    access: rw
+spanning_tree:
+  mode: none
+tacacs_servers:
+  hosts:
+  - host: 10.30.1.50
+    vrf: MGMT
+    key: ENCRYPTED_KEY
+  - host: 10.30.1.51
+    vrf: MGMT
+    key: ENCRYPTED_KEY
+  policy_unknown_mandatory_attribute_ignore: false
+transceiver_qsfp_default_mode_4x10: true
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+vrfs:
+- name: MGMT
+  ip_routing: false

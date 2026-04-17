@@ -1,0 +1,1015 @@
+aaa_root:
+  disabled: true
+aaa_server_groups:
+- name: TACACS_GROUP
+  type: tacacs+
+  servers:
+  - server: 2.2.2.1
+    vrf: MGMT
+  - server: 2.2.2.2
+    vrf: MGMT
+clock:
+  timezone: UTC
+config_end: true
+daemon_terminattr:
+  cvaddrs:
+  - 10.1.1.1:9910
+  cvauth:
+    method: token
+    token_file: /tmp/token
+  cvsourceintf: Management1
+  cvvrf: MGMT
+  disable_aaa: false
+  smashexcludes: ale,flexCounter,hardware,kni,pulse,strata
+enable_password:
+  disabled: true
+ethernet_interfaces:
+- name: Ethernet51
+  description: MLAG_LABRLEAF02A_Ethernet51
+  shutdown: false
+  channel_group:
+    id: 51
+    mode: active
+  metadata:
+    peer: LABRLEAF02A
+    peer_interface: Ethernet51
+    peer_type: mlag_peer
+- name: Ethernet52
+  description: MLAG_LABRLEAF02A_Ethernet52
+  shutdown: false
+  channel_group:
+    id: 51
+    mode: active
+  metadata:
+    peer: LABRLEAF02A
+    peer_interface: Ethernet52
+    peer_type: mlag_peer
+- name: Ethernet49
+  description: P2P_LABRSPINE01A_Ethernet1
+  shutdown: false
+  mtu: 9214
+  ip_address: 10.255.2.1/31
+  metadata:
+    peer: LABRSPINE01A
+    peer_interface: Ethernet1
+    peer_type: spine
+  switchport:
+    enabled: false
+- name: Ethernet50
+  description: P2P_LABRSPINE02A_Ethernet1
+  shutdown: false
+  mtu: 9214
+  ip_address: 10.255.2.3/31
+  metadata:
+    peer: LABRSPINE02A
+    peer_interface: Ethernet1
+    peer_type: spine
+  switchport:
+    enabled: false
+- name: Ethernet1
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet2
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet3
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet4
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet5
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet6
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet7
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet8
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet9
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet10
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet11
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet12
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet13
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet14
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet15
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet16
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet17
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet18
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet19
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet20
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet21
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet22
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet23
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet24
+  shutdown: false
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_CLIENTS
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 10
+- name: Ethernet25
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet26
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet27
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet28
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet29
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet30
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet31
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet32
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet33
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet34
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet35
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet36
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet37
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet38
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet39
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet40
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet41
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet42
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet43
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet44
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet45
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet46
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet47
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+- name: Ethernet48
+  shutdown: false
+  poe:
+    priority: high
+  spanning_tree_portfast: edge
+  metadata:
+    peer_type: network_port
+    peer_key: network_ports
+    port_profile: PP_WIFI_AP
+  switchport:
+    enabled: true
+    mode: access
+    access_vlan: 20
+hostname: LABRLEAF01A
+interface_profiles:
+- name: IP-PUSHED_CONFIG
+  commands:
+  - switchport
+  - switchport trunk native vlan 100
+  - switchport trunk allowed vlan 200
+  - switchport mode trunk
+  - spanning-tree portfast
+  - dot1x host-mode multi-host
+ip_domain_lookup:
+  source_interfaces:
+  - name: Management1
+    vrf: MGMT
+ip_igmp_snooping:
+  globally_enabled: true
+ip_name_server:
+  vrfs:
+  - name: MGMT
+    servers:
+    - ip_address: 1.1.1.1
+    - ip_address: 1.1.1.2
+ip_routing: true
+ip_tacacs:
+  vrfs:
+  - name: MGMT
+    source_interface: Management1
+ip_virtual_router_mac_address: 00:1c:73:00:00:99
+loopback_interfaces:
+- name: Loopback0
+  description: ROUTER_ID
+  shutdown: false
+  ip_address: 10.255.0.1/32
+- name: Loopback1
+  description: VXLAN_TUNNEL_SOURCE
+  shutdown: false
+  ip_address: 10.255.1.1/32
+- name: Loopback2
+  description: DIAG_VRF_TEST_VRF
+  shutdown: false
+  vrf: TEST_VRF
+  ip_address: 10.255.1.1/32
+management_api_http:
+  enable_https: true
+  enable_vrfs:
+  - name: MGMT
+management_interfaces:
+- name: Management1
+  description: OOB_MANAGEMENT
+  shutdown: false
+  vrf: MGMT
+  ip_address: 10.10.101.21/24
+  type: oob
+metadata:
+  is_deployed: true
+  platform: DCS-720XP-48TXH
+  dc_name: LAB
+  fabric_name: LAB
+mlag_configuration:
+  domain_id: MLAG_PAIR_01
+  local_interface: Vlan4094
+  peer_address: 10.255.2.1
+  peer_link: Port-Channel51
+  reload_delay_mlag: '300'
+  reload_delay_non_mlag: '330'
+ntp:
+  local_interface:
+    name: Management1
+    vrf: MGMT
+  servers:
+  - name: ntp1.ntp.com
+    preferred: true
+  - name: ntp2.ntp.com
+  vrf: MGMT
+port_channel_interfaces:
+- name: Port-Channel51
+  description: MLAG_LABRLEAF02A_Port-Channel51
+  shutdown: false
+  switchport:
+    enabled: true
+    mode: trunk
+    trunk:
+      groups:
+      - MLAG
+prefix_lists:
+- name: PL-LOOPBACKS-EVPN-OVERLAY
+  sequence_numbers:
+  - sequence: 10
+    action: permit 10.255.0.0/24 eq 32
+  - sequence: 20
+    action: permit 10.255.1.0/24 eq 32
+- name: PL-MLAG-PEER-VRFS
+  sequence_numbers:
+  - sequence: 10
+    action: permit 10.255.3.0/31
+route_maps:
+- name: RM-MLAG-PEER-IN
+  sequence_numbers:
+  - sequence: 10
+    type: permit
+    description: Make routes learned over MLAG Peer-link less preferred on spines to ensure optimal routing
+    set:
+    - origin incomplete
+- name: RM-CONN-2-BGP
+  sequence_numbers:
+  - sequence: 10
+    type: permit
+    match:
+    - ip address prefix-list PL-LOOPBACKS-EVPN-OVERLAY
+- name: RM-CONN-2-BGP-VRFS
+  sequence_numbers:
+  - sequence: 10
+    type: deny
+    match:
+    - ip address prefix-list PL-MLAG-PEER-VRFS
+  - sequence: 20
+    type: permit
+router_bfd:
+  multihop:
+    interval: 300
+    min_rx: 300
+    multiplier: 3
+router_bgp:
+  as: '65101'
+  router_id: 10.255.0.1
+  maximum_paths:
+    paths: 4
+  updates:
+    wait_install: true
+  bgp:
+    default:
+      ipv4_unicast: false
+  peer_groups:
+  - name: MLAG-IPv4-UNDERLAY-PEER
+    metadata:
+      type: ipv4
+    remote_as: '65101'
+    description: LABRLEAF02A
+    next_hop_self: true
+    send_community: all
+    maximum_routes: 256000
+    route_map_in: RM-MLAG-PEER-IN
+  - name: IPv4-UNDERLAY-PEERS
+    metadata:
+      type: ipv4
+    send_community: all
+    maximum_routes: 256000
+  - name: EVPN-OVERLAY-PEERS
+    metadata:
+      type: evpn
+    update_source: Loopback0
+    bfd: true
+    ebgp_multihop: 3
+    send_community: all
+    maximum_routes: 0
+  neighbors:
+  - ip_address: 10.255.3.1
+    peer_group: MLAG-IPv4-UNDERLAY-PEER
+    metadata:
+      peer: LABRLEAF02A
+    description: LABRLEAF02A_Vlan4093
+  - ip_address: 10.255.2.0
+    peer_group: IPv4-UNDERLAY-PEERS
+    remote_as: '65100'
+    metadata:
+      peer: LABRSPINE01A
+    description: LABRSPINE01A_Ethernet1
+  - ip_address: 10.255.2.2
+    peer_group: IPv4-UNDERLAY-PEERS
+    remote_as: '65100'
+    metadata:
+      peer: LABRSPINE02A
+    description: LABRSPINE02A_Ethernet1
+  - ip_address: 10.255.0.5
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65100'
+    metadata:
+      peer: LABRSPINE01A
+    description: LABRSPINE01A_Loopback0
+  - ip_address: 10.255.0.6
+    peer_group: EVPN-OVERLAY-PEERS
+    remote_as: '65100'
+    metadata:
+      peer: LABRSPINE02A
+    description: LABRSPINE02A_Loopback0
+  redistribute:
+    connected:
+      enabled: true
+      route_map: RM-CONN-2-BGP
+  vlans:
+  - id: 10
+    metadata:
+      tenants:
+      - LAB_TENANT
+    rd: 10.255.0.1:10010
+    route_targets:
+      both:
+      - 10010:10010
+    redistribute_routes:
+    - learned
+  - id: 20
+    metadata:
+      tenants:
+      - LAB_TENANT
+    rd: 10.255.0.1:10020
+    route_targets:
+      both:
+      - 10020:10020
+    redistribute_routes:
+    - learned
+  address_family_evpn:
+    peer_groups:
+    - name: EVPN-OVERLAY-PEERS
+      activate: true
+  address_family_ipv4:
+    peer_groups:
+    - name: MLAG-IPv4-UNDERLAY-PEER
+      activate: true
+    - name: IPv4-UNDERLAY-PEERS
+      activate: true
+    - name: EVPN-OVERLAY-PEERS
+      activate: false
+  vrfs:
+  - name: TEST_VRF
+    rd: 10.255.0.1:1
+    route_targets:
+      import:
+      - address_family: evpn
+        route_targets:
+        - '1:1'
+      export:
+      - address_family: evpn
+        route_targets:
+        - '1:1'
+    router_id: 10.255.0.1
+    updates:
+      wait_install: true
+    neighbors:
+    - ip_address: 10.255.3.1
+      peer_group: MLAG-IPv4-UNDERLAY-PEER
+      description: LABRLEAF02A_Vlan3000
+    redistribute:
+      connected:
+        enabled: true
+        route_map: RM-CONN-2-BGP-VRFS
+service_routing_protocols_model: multi-agent
+snmp_server:
+  contact: Global Network Operations Center <gnoc@example.com>
+  location: Global Campus Fabric
+  communities:
+  - name: ro-community-string
+    access: ro
+  - name: rw-community-string
+    access: rw
+spanning_tree:
+  mode: mstp
+  mst_instances:
+  - id: '0'
+    priority: 32768
+  no_spanning_tree_vlan: 4093-4094
+tacacs_servers:
+  hosts:
+  - host: 2.2.2.1
+    vrf: MGMT
+    key: ENCRYPTED_KEY
+  - host: 2.2.2.2
+    vrf: MGMT
+    key: ENCRYPTED_KEY
+  policy_unknown_mandatory_attribute_ignore: false
+transceiver_qsfp_default_mode_4x10: true
+virtual_source_nat_vrfs:
+- name: TEST_VRF
+  ip_address: 10.255.1.1
+vlan_interfaces:
+- name: Vlan4093
+  description: MLAG_L3
+  shutdown: false
+  ip_address: 10.255.3.0/31
+  mtu: 9214
+- name: Vlan4094
+  description: MLAG
+  shutdown: false
+  ip_address: 10.255.2.0/31
+  mtu: 9214
+  no_autostate: true
+- name: Vlan10
+  description: Lab_Test_VLAN
+  shutdown: false
+  vrf: TEST_VRF
+  ip_address_virtual: 10.0.0.1/24
+  metadata:
+    tenants:
+    - LAB_TENANT
+- name: Vlan20
+  description: Access_Points
+  shutdown: false
+  vrf: TEST_VRF
+  ip_address_virtual: 10.0.1.1/24
+  metadata:
+    tenants:
+    - LAB_TENANT
+- name: Vlan3000
+  description: MLAG_L3_VRF_TEST_VRF
+  shutdown: false
+  vrf: TEST_VRF
+  ip_address: 10.255.3.0/31
+  mtu: 9214
+  metadata:
+    tenants:
+    - LAB_TENANT
+    type: underlay_peering
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+vlans:
+- id: 4093
+  name: MLAG_L3
+  trunk_groups:
+  - MLAG
+  metadata:
+    tenants:
+    - system
+- id: 4094
+  name: MLAG
+  trunk_groups:
+  - MLAG
+  metadata:
+    tenants:
+    - system
+- id: 10
+  name: Lab_Test_VLAN
+  metadata:
+    tenants:
+    - LAB_TENANT
+- id: 20
+  name: Access_Points
+  metadata:
+    tenants:
+    - LAB_TENANT
+- id: 3000
+  name: MLAG_L3_VRF_TEST_VRF
+  trunk_groups:
+  - MLAG
+  metadata:
+    tenants:
+    - LAB_TENANT
+vrfs:
+- name: MGMT
+  ip_routing: false
+- name: TEST_VRF
+  ip_routing: true
+  metadata:
+    tenants:
+    - LAB_TENANT
+vxlan_interface:
+  vxlan1:
+    description: LABRLEAF01A_VTEP
+    vxlan:
+      source_interface: Loopback1
+      udp_port: 4789
+      virtual_router_encapsulation_mac_address: mlag-system-id
+      vlans:
+      - id: 10
+        vni: 10010
+      - id: 20
+        vni: 10020
+      vrfs:
+      - name: TEST_VRF
+        vni: 1

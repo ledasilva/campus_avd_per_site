@@ -1,0 +1,14 @@
+---
+- name: Build Campus Configurations
+  hosts: "{{ my_playbook_hosts }}"
+  vars:
+    root_dir: "{{ lookup('ansible.builtin.env', 'BUILD_OUTPUT_DIR', default=inventory_dir) }}"
+  gather_facts: false
+  tasks:
+    - name: "Step 1: Generate Structured Configuration (YAML)"
+      ansible.builtin.import_role:
+        name: arista.avd.eos_designs
+
+    - name: "Step 2: Generate Device CLI and Documentation (Markdown)"
+      ansible.builtin.import_role:
+        name: arista.avd.eos_cli_config_gen

@@ -1,0 +1,53 @@
+---
+fabric_name: SIN # it has to match the inventory group as mentioned here: https://avd.arista.com/devel/ansible_collections/arista/avd/roles/eos_designs/docs/data-models.html?h=fabric_name#fabric-topology-hierarchy
+campus: SIN
+dc_name: SIN
+
+spine:
+  defaults:
+    platform: DCS-7050PX4
+    loopback_ipv4_offset: 4
+    loopback_ipv4_pool: 10.255.0.0/24
+    bgp_as: 65200
+  nodes:
+    - name: SINRSPINE01A
+      mgmt_ip: 10.10.101.11/24
+    - name: SINRSPINE02A
+      mgmt_ip: 10.10.101.12/24
+
+
+l3leaf:
+  defaults:
+    platform: DCS-720XP-48TXH
+    uplink_switches: [SINRSPINE01A, SINRSPINE02A]
+    uplink_interfaces: [Ethernet49, Ethernet50]
+    spanning_tree_mode: mstp
+    spanning_tree_priority: 32768
+    virtual_router_mac_address: 00:1c:73:00:00:99
+    loopback_ipv4_pool: 10.255.0.0/24
+    vtep_loopback_ipv4_pool: 10.255.1.0/24
+    uplink_ipv4_pool: 10.255.2.0/24
+    mlag: true
+    mlag_interfaces: [Ethernet51, Ethernet52]
+    mlag_peer_ipv4_pool: 10.255.2.0/24
+    mlag_peer_l3_ipv4_pool: 10.255.3.0/24
+  node_groups:
+    - group: MLAG_PAIR_01
+      bgp_as: 65201
+      nodes:
+        - name: SINRLEAF01A
+          mgmt_ip: 10.10.101.21/24
+          uplink_switch_interfaces: [Ethernet1, Ethernet1]
+        - name: SINRLEAF02A
+          mgmt_ip: 10.10.101.22/24
+          uplink_switch_interfaces: [Ethernet2, Ethernet2]
+  nodes:
+    - name: SINRLEAF03A
+      bgp_as: 65203
+      platform: CCS-758
+      mgmt_ip: 10.120.34.91/24
+      mlag: false
+      uplink_interfaces: [Ethernet53, Ethernet54]
+      uplink_switch_interfaces: [Ethernet3, Ethernet3]
+
+

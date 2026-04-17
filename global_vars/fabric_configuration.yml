@@ -1,0 +1,18 @@
+---
+# Global fabric configuration variables
+
+fabric_numbering:
+  node_id:
+    algorithm: "pool_manager"
+
+management_eapi:
+  enabled: true
+  enable_https: true
+
+default_node_types:
+  - node_type: spine
+    match_hostnames:
+      - ".*SPINE.*"
+  - node_type: l3leaf
+    match_hostnames:
+      - ".*LEAF.*"

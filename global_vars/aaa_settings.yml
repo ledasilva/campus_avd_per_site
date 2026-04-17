@@ -1,0 +1,18 @@
+---
+# --- Global Management Credentials (AVD 6.x Format) ---
+aaa_settings:
+  local_users:
+    - name: admin
+      privilege: 15
+      role: network-admin
+      sha512_password: "$6$l6B...your_hash..." # Encrypt this with ansible-vault later
+  tacacs:
+    servers:
+      - host: 10.10.1.50
+        groups: 
+          - TACACS_GROUP
+        key: "ENCRYPTED_KEY"
+      - host: 10.10.1.51
+        groups: 
+          - TACACS_GROUP
+        key: "ENCRYPTED_KEY"

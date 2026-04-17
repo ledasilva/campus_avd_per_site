@@ -1,0 +1,26 @@
+---
+
+# FLAT VARIABLES (Highest safety against overwriting)
+# loopback_ipv4_pool: 10.255.0.0/24
+# vtep_loopback_ipv4_pool: 10.255.1.0/24
+# uplink_ipv4_pool: 10.255.2.0/24
+
+tenants:
+  - name: SIN_TENANT
+    mac_vrf_vni_base: 20000
+    vrfs:
+      - name: TEST_VRF
+        vrf_id: 1
+        vtep_diagnostic:
+          loopback: 2
+          loopback_ip_range: 10.255.1.0/24
+        svis:
+          - id: 10
+            name: SIN_Test_VLAN
+            enabled: true
+            ip_address_virtual: 10.0.0.1/24
+          - id: 20
+            name: SIN_Access_Points
+            enabled: true
+            ip_address_virtual: 10.0.1.1/24
+

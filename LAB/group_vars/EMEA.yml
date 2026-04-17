@@ -1,0 +1,35 @@
+---
+# NTP Settings (Regional)
+ntp_settings:
+  servers:
+    - name: ntp1.ntp.com
+    - name: ntp2.ntp.com
+
+timezone: UTC
+
+# DNS Settings (Regional)
+
+dns_settings:
+  servers:
+    - ip_address: 1.1.1.1
+    - ip_address: 1.1.1.2
+
+# AAA Settings (Regional TACACS+)
+aaa_settings:
+  tacacs:
+    servers:
+      - host: 2.2.2.1 
+        groups: 
+          - TACACS_GROUP
+        key: "ENCRYPTED_KEY"
+      - host: 2.2.2.2
+        groups: 
+          - TACACS_GROUP
+        key: "ENCRYPTED_KEY"
+
+# CloudVision (CVP) Settings
+cv_settings:
+  onprem_clusters:
+    - name: EMEA
+      servers: 
+        - name: 10.1.1.1

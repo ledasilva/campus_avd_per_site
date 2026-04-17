@@ -1,0 +1,53 @@
+---
+all:
+  children:
+    GLOBAL:
+      children:
+        APAC:
+          children:
+            SIN:
+              children:
+                FABRIC:
+                  children:
+                    SIN_SPINES:
+                      hosts:
+                        SINRSPINE01A:
+                          ansible_host: 10.10.102.11
+                        SINRSPINE02A:
+                          ansible_host: 10.10.102.12
+                    SIN_LEAFS:
+                      children:
+                        SINRLEAF0102:
+                          hosts:
+                            SINRLEAF01A:
+                              ansible_host: 10.10.102.21
+                            SINRLEAF02A:
+                              ansible_host: 10.10.102.22
+                      hosts:
+                        SINRLEAF03A:
+                          ansible_host: 10.10.102.23
+    CAMPUS_CORES:
+      children:
+        SIN_CORES:
+    CAMPUS_SPINES:
+      children:
+        SIN_SPINES:
+    CAMPUS_LEAFS:
+      children:
+        SIN_LEAFS:
+    CAMPUS_SERVICE_LEAFS:
+      children:
+        SIN_SERVICE_LEAFS:
+    CAMPUS_LEGACY_LEAFS:
+      children:
+        SIN_LEGACY_LEAFS:
+    NETWORKS:
+      children:
+        SIN_CORES:
+        SIN_LEAFS:
+        SIN_LEGACY_LEAFS:
+    ENDPOINTS:
+      children:
+        SIN_LEAFS:
+        SIN_SERVICE_LEAFS:
+        SIN_LEGACY_LEAFS:

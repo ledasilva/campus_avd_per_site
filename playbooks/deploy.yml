@@ -1,0 +1,14 @@
+---
+- name: Deploy to CloudVision
+  hosts: "{{ target_hosts | default('all') }}"
+  gather_facts: false
+  tasks:
+    - name: "Push to CloudVision Studios"
+      ansible.builtin.import_role:
+        name: arista.avd.cv_deploy
+      vars:
+        # These come from your GitLab CI Secrets
+        cv_server: "{{ lookup('env', 'CV_SERVER') }}"
+        cv_token: "{{ lookup('env', 'CV_TOKEN') }}"
+        # This keeps the change pending so an admin can click "Execute" in the GUI
+        cv_run_change_control: false

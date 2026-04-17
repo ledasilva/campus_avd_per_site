@@ -1,0 +1,54 @@
+---
+all:
+  children:
+    GLOBAL:
+      children:
+        EMEA:
+          children:
+            FABRIC:
+              children:
+                LAB:
+                  children:
+                    LAB_SPINES:
+                      hosts:
+                        LABRSPINE01A:
+                          ansible_host: 10.10.101.11
+                        LABRSPINE02A:
+                          ansible_host: 10.10.101.12
+                    LAB_LEAFS:
+                      children:
+                        LABRLEAF0102:
+                          hosts:
+                            LABRLEAF01A:
+                              ansible_host: 10.10.101.21
+                            LABRLEAF02A:
+                              ansible_host: 10.10.101.22
+                      hosts:
+                        LABRLEAF03A:
+                          ansible_host: 10.120.34.91
+    CAMPUS_CORES:
+      children:
+        LAB_CORES:
+    CAMPUS_SPINES:
+      children:
+        LAB_SPINES:
+    CAMPUS_LEAFS:
+      children:
+        LAB_LEAFS:
+    CAMPUS_SERVICE_LEAFS:
+      children:
+        LAB_SERVICE_LEAFS:
+    CAMPUS_LEGACY_LEAFS:
+      children:
+        LAB_LEGACY_LEAFS:
+    NETWORKS:
+      children:
+        LAB_CORES:
+        LAB_LEAFS:
+        LAB_LEGACY_LEAFS:
+    ENDPOINTS:
+      children:
+        LAB_LEAFS:
+        LAB_SERVICE_LEAFS:
+        LAB_LEGACY_LEAFS:
+
